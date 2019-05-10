@@ -1,8 +1,9 @@
 import React from 'react';
-import SignUpForm from './SignUpComponent';
+import SignUpView from './views/SignUpView';
 import './App.css';
 
-function App() {
+function App(props) {
+
   return (
 <div>
 <nav className="navbar navbar-expand-md navbar-light bg-light">
@@ -22,7 +23,7 @@ function App() {
     <div className="container">
       <div className="row">
       <div className="col-6">
-      <SignUpForm/>
+      <SignUpView name={props.loginName}/>
       </div>
       </div>
     </div>
