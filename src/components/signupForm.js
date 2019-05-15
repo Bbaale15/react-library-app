@@ -22,7 +22,7 @@ const signupForm = (props) => {
                     <label htmlFor="confirmPassword">Confirm Password</label>
                     <input onChange={handleOnchange} type="password" className="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm password"/>
                 </div>
-                <Button disabled={disabled} type="submit" action="register" className="btn-success"/>
+                <Button disabled={disabled} type="submit" action="Register" className="btn-success"/>
             </form>
 
         </div>
