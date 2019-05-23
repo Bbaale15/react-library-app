@@ -6,10 +6,10 @@ const signupForm = (props) => {
         <div>
             <h3>Create an account</h3>
             <form  onSubmit={handleSubmit}>
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label htmlFor="email">Email address</label>
                     <input onChange={handleOnchange} type="email" className="form-control" id="email" name = "email"  aria-describedby="emailHelp" placeholder="Enter email"/>
-                </div>
+                </div> */}
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input onChange={handleOnchange} type="text" className="form-control" id="username"  name="username" placeholder="Enter your full name"/>

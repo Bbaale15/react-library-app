@@ -1,30 +1,52 @@
 class Http {
-    static async get(url, token=null){
-        const response = await  fetch(url,{
-            headers:{
-                Authorization:`Bearer ${token}`
-            }
-        })
-        return  response.json();
-    }
-    static async post(url, token=null, data){
+
+    static baseurl = 'https://fast-foods-api-main.herokuapp.com/api/v2';
+
+    static async get(url, token) {
         try {
-            const response = await fetch(url,{
-                method:'POST',
-                headers:{
-                    Authorization:`Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                body:JSON.stringify(data)
-
-            });
-            const result = await response.json();
-            return  result;
-        }catch (e) {
-            console.log(e)
+            const response = await fetch(url, {
+                headers: this.addHeaders(token)
+            })
+            return response.json();
+        } catch (error) {
+            console.log(error)
         }
+    }
+    static async post(api, token, data) {
+        try {
+            const response = await fetch(`${this.baseurl}/${api}`, {
+                method: 'POST',
+                headers: this.addHeaders(token),
+                body: JSON.stringify(data)
+            });
 
+            const result = await response.json();
+            if(!response.ok){
+              throw new Error(result.message);  
+            }
+
+            return result;
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    static addHeaders(token) {
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+        if (token) {
+            headers.Authorization = `Bearer ${token}`
+        }
+        return headers;
+    }
+
+    static handleError(response) {
+        if(response.ok){
+            throw new Error(response.status)
+        }
+       return response;
     }
 }
 
-export  default Http;
+export default Http;
