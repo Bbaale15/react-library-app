@@ -27,7 +27,7 @@ class LoginView extends React.Component {
             if(res){
                localStorage.setItem('userData', res);
                // Redirect to private area.
-            //    browserHistory.push('/menu');
+               this.props.history.push('/menu');
             }
         });
     }

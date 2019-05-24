@@ -12,6 +12,7 @@ class MenuView extends React.Component {
 
      componentDidMount() {
          // Fetch menu items here.
+         
     }
 }
 

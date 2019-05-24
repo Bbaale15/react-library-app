@@ -5,7 +5,7 @@ class NavView extends React.Component {
 
     render() {
       return (
-          <Nav appTitle="Fast Foods App"/>
+          <Nav  appTitle={this.props.appTitle} isLoggedIn = {this.props.isLoggedIn} userName = {this.props.userName}  handleLogout = {this.props.handleLogout} />
       )
     }
 }

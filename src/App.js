@@ -11,17 +11,18 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 class App extends React.Component {
 
   state = {
-    isLoggedIn: false
+    isLoggedIn: true,
+    userName: 'Bbaale'
   }
 
   render() {
     return (
-      <div>
+      <div className="main-div">
         <Router>
-          <Nav />
+          <Nav appTitle="Fast Foods App" isLoggedIn={this.state.isLoggedIn} userName = {this.state.userName} handleLogout = {this.handleLogOut}  />
           <div className="container">
             <div className="row">
-              <div className="col-6">
+              <div className="col-12">
                 <Switch>
                   <Route path="/" exact component={SignUpView} />
                   <Route path="/login" component={LoginView} />
@@ -34,11 +35,17 @@ class App extends React.Component {
       </div>
     )
   };
+
+
+  handleLogOut = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    window.location.href = '/login';
+    console.log('User has been logged out');
+  }
+
 }
 
-// function App(props) {
 
-
-// }
 
 export default App;
