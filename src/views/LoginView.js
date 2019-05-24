@@ -27,7 +27,7 @@ class LoginView extends React.Component {
             this.setState({ disable : true });
             if (res) {
                 this.setState({ disable : false });
-                localStorage.setItem('userData', res);
+                localStorage.setItem('userData', JSON.stringify(res));
                 // Redirect to private area.
                 this.props.history.push('/menu');
             }
