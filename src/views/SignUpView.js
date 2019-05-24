@@ -29,6 +29,8 @@ class SignUpView extends React.Component {
         HttpClient.post('auth/signup',null, data).then(res=>{
             // Redirect to login page with message.
             console.log(res);
+            this.setState({ disabled: true });
+            this.props.history.push('/login');
         })
 
 

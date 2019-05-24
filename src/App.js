@@ -11,8 +11,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 class App extends React.Component {
 
   state = {
-    isLoggedIn: true,
-    userName: 'Bbaale'
+    isLoggedIn: false,
+    userName: ''
   }
 
   render() {

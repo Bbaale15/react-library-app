@@ -8,12 +8,12 @@ class LoginView extends React.Component {
     state = {
         username: '',
         password: '',
-        alert_messages:''
+        alert_messages: '',
+        disabled: false
     }
     handleOnchange = (e) => {
-        let fields = {[e.target.id]: e.target.value};
-        this.setState( {
-            fields:fields
+        this.setState({
+            [e.target.id]: e.target.value
         })
     }
     handleSubmit = (e) => {
@@ -24,17 +24,19 @@ class LoginView extends React.Component {
         }
         HttpClient.post('auth/login', null, data).then(res => {
             //Login was sucessful. Add token to local storage.
-            if(res){
-               localStorage.setItem('userData', res);
-               // Redirect to private area.
-               this.props.history.push('/menu');
+            this.setState({ disable : true });
+            if (res) {
+                this.setState({ disable : false });
+                localStorage.setItem('userData', res);
+                // Redirect to private area.
+                this.props.history.push('/menu');
             }
         });
     }
 
     render() {
         return (
-            <LoginForm action="Login" handleOnchange={this.handleOnchange} handleSubmit={this.handleSubmit} />
+            <LoginForm action="Login" disabled={this.state.disabled} handleOnchange={this.handleOnchange} handleSubmit={this.handleSubmit} />
         )
     }
 }
