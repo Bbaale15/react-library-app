@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 class Http {
 
     static baseurl = 'https://fast-foods-api-main.herokuapp.com/api/v2';

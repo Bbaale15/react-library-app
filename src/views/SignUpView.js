@@ -58,9 +58,17 @@ class SignUpView extends React.Component {
     //     console.log("Component removed from DOM.");
     // }
 
-    // componentDidMount() {
-    //     console.log("Component Just loaded..");
-    // }
+    componentDidMount() {
+        const token = localStorage.getItem('token');
+        this.goHome(token);
+    }
+
+
+    goHome = (val) => {
+        if (val) {
+            this.props.history.push('/menu');
+        }
+    }
 
 }
 
