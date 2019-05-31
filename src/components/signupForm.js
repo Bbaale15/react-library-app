@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './button'
 const signupForm = (props) => {
-    const { handleSubmit, handleOnchange, disabled } = props;
+    const { handleSubmit, handleOnchange, disabled, invalid } = props;
     return (
         <div>
             <h3>Create an account</h3>
@@ -12,9 +12,13 @@ const signupForm = (props) => {
                     <label htmlFor="email">Email address</label>
                     <input onChange={handleOnchange} type="email" className="form-control" id="email" name = "email"  aria-describedby="emailHelp" placeholder="Enter email"/>
                 </div> */}
-                        <div className="form-group">
+                        <div className={`form-group has-error`}>
                             <label htmlFor="username">Username</label>
-                            <input onChange={handleOnchange} type="text" className="form-control" id="username" name="username" placeholder="Enter your full name" />
+                            
+                            <input onChange={handleOnchange} type="text" 
+                            className="form-control" id="username" name="username"
+                             placeholder="Enter your full name" />
+                             {invalid ? 'Username invalid' : null}
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password</label>

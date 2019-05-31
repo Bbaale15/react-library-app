@@ -1,7 +1,7 @@
 import React from 'react';
 import Menu from '../components/menu';
 import axios from 'axios';
-
+import HOC from '../hoc/logInHoc'
 
 class MenuView extends React.Component {
 
@@ -25,4 +25,4 @@ class MenuView extends React.Component {
     }
 }
 
-export default MenuView;
+export default HOC(MenuView);

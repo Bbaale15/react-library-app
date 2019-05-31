@@ -28,7 +28,10 @@ class App extends React.Component {
                 <Switch>
                   <Route path="/" exact component={SignUpView} />
                   <Route path="/login" component={LoginView} />
-                  <Route path="/menu" render={() => (this.state.isLoggedIn ? (<MenuView />) : (<Redirect to="/login" />))} />
+                  <Route path="/menu" 
+                 component={MenuView}
+      
+                   />
                   <Route path="/orders" render={() => (this.state.isLoggedIn ? (<OrdersView />) : (<Redirect to="/login" />))} />
                 </Switch>
               </div>

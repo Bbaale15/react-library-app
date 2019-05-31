@@ -42,3 +42,7 @@
 .main-div{
   padding-top: 80px;
 }
+
+input.error{
+  border:red 10px;
+}

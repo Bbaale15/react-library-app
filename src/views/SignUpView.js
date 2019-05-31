@@ -8,11 +8,30 @@ class SignUpView extends React.Component {
         // email: '',
         password: '',
         confirmPassword: '',
-        disabled: false
+        disabled: false,
+        invalid: false
     }
     handleOnchange = (e) => {
+        const name = e.target.id;
+        const value = e.target.value
         this.setState({
-            [e.target.id]: e.target.value
+            [name]: value
+        }, () => {
+           switch(name){
+               case 'username':
+               if(value.length === 'deo'){
+                   this.setState({
+                       invalid:true
+                   })
+                   return;
+               }
+               this.setState({
+                   invalid: false
+               })
+               break;
+               case 'email':
+               break;
+           }
         })
     }
 
@@ -44,20 +63,6 @@ class SignUpView extends React.Component {
         //     console.log(data)
         // })
     }
-
-
-    render() {
-        // console.log(this.state)
-        return (
-            <SignUpForm disabled={this.state.disabled} action="signup" handleOnchange={this.handleOnchange} handleSubmit={this.handleSubmit} />
-        )
-
-    }
-
-    // componentWillUnmount = () => {
-    //     console.log("Component removed from DOM.");
-    // }
-
     componentDidMount() {
         const token = localStorage.getItem('token');
         this.goHome(token);
@@ -69,6 +74,21 @@ class SignUpView extends React.Component {
             this.props.history.push('/menu');
         }
     }
+
+
+    render() {
+        // console.log(this.state)
+        return (
+            <SignUpForm invalid={this.state.invalid} disabled={this.state.disabled} action="signup" handleOnchange={this.handleOnchange} handleSubmit={this.handleSubmit} />
+        )
+
+    }
+
+    // componentWillUnmount = () => {
+    //     console.log("Component removed from DOM.");
+    // }
+
+   
 
 }
 
